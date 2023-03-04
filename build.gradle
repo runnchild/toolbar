@@ -1,9 +1,20 @@
-plugins {
-    id 'com.rongc.lib'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+
+buildscript {
+    ext.kotlin_version ="1.8.0"
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.1"
+        classpath "com.github.runnchild:BuildConfig:2.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
+apply plugin: 'com.rongc.lib'
 android {
     compileSdk 33
     defaultConfig {
@@ -21,7 +32,6 @@ android {
 dependencies {
     implementation 'androidx.core:core:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
 //    implementation project(':feature')
 }
 afterEvaluate {
