@@ -17,7 +17,7 @@ buildscript {
 }
 ```
 ```
-implementation "com.github.runnchild.Feature:toolbar:$latest_version"
+implementation "com.github.runnchild:toolbar:$latest_version"
 ```
 2.在页面xml中添加PsnToolbar
 
