@@ -22,11 +22,9 @@
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingStart="15dp"
-            android:paddingTop="14dp"
             android:paddingEnd="15dp"
-            android:paddingBottom="14dp"
             android:scaleType="centerInside"
             android:src="@{config.navigationIcon}"
             app:layout_constraintStart_toStartOf="parent"

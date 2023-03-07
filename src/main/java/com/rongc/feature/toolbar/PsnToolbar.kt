@@ -22,7 +22,8 @@ class PsnToolbar @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr), IToolBar {
 
     lateinit var binding: PsnToolbarBinding
-    val toolbarConfig = MutableLiveData<ToolbarConfig>()
+    private val toolbarConfig = MutableLiveData<ToolbarConfig>()
+    private var barConfig: BarConfig = BarConfig()
 
     init {
         if (isInEditMode) {
@@ -33,14 +34,27 @@ class PsnToolbar @JvmOverloads constructor(
         }
     }
 
-    override fun setBarConfig(barConfig: BarConfig) {
-        super.setBarConfig(barConfig)
-        toolbarConfig.value = barConfig.toolbarConfig
-        binding.config = toolbarConfig
-        addMenu(barConfig.toolbarConfig.menuItems)
+    fun setBarConfig(config: BarConfig.() -> Unit) {
+        barConfig.apply(config)
+        setToolbar()
     }
 
-    private fun addMenu(menus: ArrayList<Pair<KClass<*>, MenuFunction<*>>>) {
+    override fun toolbar(config: ToolbarConfig.() -> Unit) {
+        barConfig.toolbar(config)
+        setToolbar()
+        addMenus(barConfig.toolbarConfig.menuItems)
+    }
+
+    private fun setToolbar() {
+        title(barConfig.toolbarConfig.titleBlock)
+        navigation(barConfig.toolbarConfig.navigationBlock)
+
+        toolbarConfig.value = barConfig.toolbarConfig
+        binding.config = toolbarConfig
+    }
+
+    private fun addMenus(menus: ArrayList<Pair<KClass<*>, MenuFunction<*>>>) {
+        binding.menuParent.removeAllViews()
         fun addItem(view: View) {
             binding.menuParent.addView(view, LayoutParams(-2, -1))
         }
@@ -56,6 +70,9 @@ class PsnToolbar @JvmOverloads constructor(
     }
 
     override fun title(block: (TextView.() -> Unit)?) {
+        barConfig.toolbar {
+            titleBlock = block
+        }
         block?.let { binding.tvTitle.apply(it) }
     }
 

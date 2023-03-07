@@ -34,9 +34,9 @@ interface IToolBar {
 
     fun navigation(block: (ImageView.() -> Unit)?)
 
-    fun setBarConfig(barConfig: BarConfig) {
-        title(barConfig.toolbarConfig.titleBlock)
-        navigation(barConfig.toolbarConfig.navigationBlock)
-//        viewModel.setBarConfig(barConfig)
-    }
+//    fun setBarConfig(barConfig: BarConfig) {
+//        title(barConfig.toolbarConfig.titleBlock)
+//        navigation(barConfig.toolbarConfig.navigationBlock)
+////        viewModel.setBarConfig(barConfig)
+//    }
 }
