@@ -33,19 +33,6 @@
             tools:src="@mipmap/common_icon_back"
             tools:tint="@android:color/black" />
 
-        <LinearLayout
-            android:id="@+id/menu_parent"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:gravity="end|center"
-            android:orientation="horizontal"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toEndOf="@id/tv_title"
-            app:layout_constraintTop_toTopOf="parent"/>
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -53,6 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="55dp"
             android:layout_marginEnd="55dp"
+            app:layout_constraintWidth_max="250dp"
             android:ellipsize="end"
             android:gravity="center"
             app:layout_constrainedWidth="true"
@@ -61,12 +49,22 @@
             android:textColor="@{config._titleColor}"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent"
             app:orInvisible="@{config.titleVisible}"
-            tools:text="标题" />
+            tools:text="标题标题标题标题标题标题标题标题标题标题标题标题标题标题" />
+
+        <LinearLayout
+            android:id="@+id/menu_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="end|center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <View
             android:layout_width="match_parent"
