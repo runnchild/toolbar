@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        tools:layout_height="56dp"
         android:background="@{config.background}"
         app:visible="@{config.toolbarVisible}"
         app:addStatusBarHeight="@{config.addStatusBarHeight}"
